@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Portal Group</h1>
+
+    {% if user.is_authenticated %}
+        <form method="POST" enctype="multipart/form-data" class="post-form">
+            {% csrf_token %}
+            <div class="gold-form-wrapper">
+                {{ form.as_p }}
+                <button type="submit">Отправить пост</button>
+            </div>
+        </form>
+    {% else %}
+        <div class="login-prompt">
+            <p>Чтобы оставить пост, пожалуйста, <a href="{% url 'login' %}">войдите в аккаунт</a>.</p>
+        </div>
+    {% endif %}
+
+    <hr>
+
+    {% for post in posts %}
+        <div class="post-card">
+            <div class="post-header">
+                <img src="{{ post.author.profile.avatar.url }}" class="mini-avatar">
+                <strong>{{ post.author.username }}</strong>
+            </div>
+            <div class="post-content">
+                <p>{{ post.content }}</p>
+                {% if post.image %}
+                    <img src="{{ post.image.url }}" class="post-img">
+                {% endif %}
+                {% if post.video %}
+                    <video controls class="post-video">
+                        <source src="{{ post.video.url }}" type="video/mp4">
+                    </video>
+                {% endif %}
+                <a href="{% url 'post_detail' post.pk %}" class="gold-button-link">Читать далее →</a>
+            </div>
+        </div>
+        {% if post.author == user %}
+            <form action="{% url 'post_delete' post.pk %}" method="POST" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn-delete" onclick="return confirm('Точно удалить?')">
+                    Удалить
+                </button>
+            </form>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
