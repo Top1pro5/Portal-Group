@@ -79,6 +79,6 @@ python manage.py runserver
 
 # 🤝 Контакты
 
-Автор: Top1pro5
+Автор: Feistyron
 
 Проект находится в стадии активной разработки.
