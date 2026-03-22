@@ -1,4 +1,4 @@
-# 🏛️ Portal Group — Социальный Форум в Золотых Тонах
+# Portal Group — Социальный Форум в Золотых Тонах
 
 ![Python](https://img.shields.io/badge/Python-3.12-ffd700?style=for-the-badge&logo=python)
 ![Django](https://img.shields.io/badge/Django-6.0-092e20?style=for-the-badge&logo=django)
