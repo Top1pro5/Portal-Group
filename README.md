@@ -13,7 +13,6 @@
 | Главная страница | Страница поста | Профиль пользователя |
 | :---: | :---: | :---: |
 | ![Home Page](https://raw.githubusercontent.com/Top1pro5/Portal-Group/main/screenshots/home.png) | ![Post Detail](https://raw.githubusercontent.com/Top1pro5/Portal-Group/main/screenshots/post.png) | ![Profile](https://raw.githubusercontent.com/Top1pro5/Portal-Group/main/screenshots/profile.png) |
-*(Добавьте свои скриншоты в папку `/screenshots/` в корне проекта)*
 
 ---
 
