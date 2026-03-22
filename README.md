@@ -2,7 +2,7 @@
 
 ![Python](https://img.shields.io/badge/Python-3.12-ffd700?style=for-the-badge&logo=python)
 ![Django](https://img.shields.io/badge/Django-6.0-092e20?style=for-the-badge&logo=django)
-![UI](https://img.shields.io/badge/UI-Dark_Gold-black?style=for-the-badge)
+![UI](https://img.shields.io/badge/UI-Light_Gold-white?style=for-the-badge&logo=target)
 
 **Portal Group** — это современная платформа для обсуждений, выполненная в элегантной светлой эстетике с золотыми акцентами. Проект ориентирован на удобство ведения дискуссий и визуальный комфорт.
 
