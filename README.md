@@ -61,7 +61,7 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-#📂 Структура проекта
+# 📂 Структура проекта
 
 **apps/accounts/**— логика пользователей, профили и форум.
 
@@ -71,7 +71,7 @@ python manage.py runserver
 
 **media/**— место хранения загруженных пользователями фото.
 
-#🤝 Контакты
+# 🤝 Контакты
 
 Автор: Top1pro5
 
