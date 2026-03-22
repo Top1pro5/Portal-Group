@@ -44,3 +44,30 @@ python -m venv .venv
 .venv\Scripts\activate
 # Для Linux/Mac:
 source .venv/bin/activate
+```
+### 2. Установка зависимостей
+```bash
+pip install django Pillow
+```
+### 3. Инициализация базы данных
+-Создайте таблицы и суперпользователя (админа):
+```bash
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+```
+### 4. Запуск
+```bash
+python manage.py runserver
+```
+
+#📂 Структура проекта
+**apps/accounts/**— логика пользователей, профили и форум.
+**templates/**— HTML-шаблоны
+**static/**— CSS стили и кастомные скрипты.
+**media/**— место хранения загруженных пользователями фото.
+
+#🤝 Контакты
+Автор: Top1pro5
+
+Проект находится в стадии активной разработки.
