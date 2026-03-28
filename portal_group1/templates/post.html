@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="post-full-view">
+    <a href="{% url 'home' %}" class="btn-back">← Назад в ленту</a>
+
+    <div class="post-card main-thread">
+        <div class="post-header">
+            <img src="{{ post.author.profile.avatar.url }}" class="mini-avatar">
+            <a href="{% url 'profile' post.author.username %}" class="gold-author-link">
+                {{ post.author.username }}
+            </a>
+            <span>{{ post.created_at|date:"d.m.Y H:i" }}</span>
+        </div>
+        <div class="post-content">
+            <p class="main-text">{{ post.content }}</p>
+
+            {% if post.image %}
+                <img src="{{ post.image.url }}" class="post-img-large">
+            {% endif %}
+
+            {% if post.video %}
+                <div class="video-wrapper">
+                    <video controls class="post-video-full">
+                        <source src="{{ post.video.url }}" type="video/mp4">
+                        Ваш браузер не поддерживает видео.
+                    </video>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <hr class="gold-divider">
+
+    <h3>Обсуждениеrrrrr</h3>
+    <div class="main-grid">
+        {% for reply in comments %}
+            <div class="grid-card">
+                <div class="reply-header">
+                    <img src="{{ reply.author.profile.avatar.url }}" class="mini-avatar-small">
+                    <strong>{{ reply.author.username }}</strong>
+                </div>
+                <p>{{ reply.content }}</p>
+                {% if reply.image %}
+                    <img src="{{ reply.image.url }}" class="reply-img">
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>Здесь пока нет ответов. Будьте первым!</p>
+        {% endfor %}
+    </div>
+
+    {% if user.is_authenticated %}
+        <form method="POST" class="gold-form-wrapper" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h4>Ваш ответ в ветку:</h4>
+            {{ form.as_p }}
+            <button type="submit">Ответить</button>
+        </form>
+    {% endif %}
+</div>
+{% endblock %}

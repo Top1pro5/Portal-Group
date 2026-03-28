@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="profile-page">
+
+    <div class="profile-header-container">
+        <div class="header-image-wrapper">
+            {% if profile_user.profile.header_image %}
+                <img src="{{ profile_user.profile.header_image.url }}" class="header-img">
+            {% else %}
+                <div class="header-placeholder"></div> {% endif %}
+        </div>
+
+        <div class="avatar-wrapper">
+            {% if profile_user.profile.avatar %}
+                <img src="{{ profile_user.profile.avatar.url }}" class="profile-main-avatar">
+            {% else %}
+                <div class="profile-main-avatar avatar-placeholder">
+                    <span>{{ profile_user.username|first|upper }}</span>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="profile-info">
+        <h1>{{ profile_user.username }}</h1>
+        <p class="email-text">Email: {{ profile_user.email }}</p>
+
+        {% if is_owner %}
+            <details class="settings-details">
+                <summary class="btn">Настройки профиля</summary>
+                <form method="POST" enctype="multipart/form-data" class="gold-form-wrapper">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Сохранить</button>
+                </form>
+            </details>
+        {% endif %}
+    </div>
+
+    <hr class="gold-divider">
+
+    <div class="user-posts">
+        {% for post in user_posts %}
+            <a href="{% url 'post_detail' post.pk %}" class="post-link-wrapper">
+                <div class="post-card">
+                    <div class="post-content">
+                        <p>{{ post.content|truncatewords:20 }}</p> {% if post.image %}
+                            <img src="{{ post.image.url }}" class="post-img-preview">
+                        {% endif %}
+                    </div>
+
+                    <div class="post-footer">
+                        <span class="post-date">{{ post.created_at|date:"d M Y" }}</span>
+                        <span class="gold-link">Читать ветку →</span>
+                    </div>
+                </div>
+            </a>
+        {% empty %}
+            <p class="text-muted">Автор еще не создал ни одной темы.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
